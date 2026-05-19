@@ -21,8 +21,8 @@ export default {
         'web-ext-config.mjs'
     ],
     sign: {
-        apiKey: process.env.WEB_EXT_API_KEY,
-        apiSecret: process.env.WEB_EXT_API_SECRET,
+        apiKey: process.env.WEB_EXT_API_KEY || "",
+        apiSecret: process.env.WEB_EXT_API_SECRET || "",
         channel: "listed"
     }
 };
