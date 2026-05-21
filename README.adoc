@@ -8,9 +8,11 @@ endif::[]
 :toc-placement!:
 :icons: font
 
+> ⚠️ *This is a fork of link:https://github.com/gavink97/pipn[gavink97/pipn].* +
+> Changes from the original are documented below. Please star the original repository if you find this useful!
+
 Pipn, a hacky way to get picture in picture mode to work automatically in
 firefox.
-
 ++++
 <a href="https://addons.mozilla.org/en-US/firefox/addon/pipn-auto-picture-in-picture/">
  <picture>
@@ -18,21 +20,32 @@ firefox.
  </picture>
 </a>
 ++++
-
 toc::[]
 
+== Changes from Original
+
+=== 1. Trigger: Focus → Minimize
+The original extension triggers picture in picture when *focus leaves Firefox* (e.g. switching to another app).
+This fork changes the trigger to *minimizing the Firefox window* instead.
+
+=== 2. Download from this fork's Release page
+[IMPORTANT]
+====
+If you want to try this modified version, download it from the link:../../releases[Releases page] of *this repository* — do **not** install from the original https://addons.mozilla.org/en-US/firefox/addon/pipn-auto-picture-in-picture/[Firefox Add-ons (AMO)] page, as that is the unmodified original extension.
+====
+
+=== 3. Star the original repository ⭐
+This fork builds on the hard work of the original author. Please give a star to the link:https://github.com/gavink97/pipn[original pipn repository]!
+
 == Getting Started
-
 === Installation
-
-1. Install pipn from https://addons.mozilla.org/en-US/firefox/addon/pipn-auto-picture-in-picture/[addons.mozilla.org (AMO)]
-
-2. Make sure `media.videocontrols.picture-in-picture.enable-when-switching-tabs.enabled` is set to `true` in `about:config`
+1. Go to the link:../../releases[Releases page] of this fork and download the latest `.xpi` file
+2. In Firefox, open `about:addons`, click the gear icon, and select *Install Add-on From File*
+3. Make sure `media.videocontrols.picture-in-picture.enable-when-switching-tabs.enabled` is set to `true` in `about:config`
 
 === Build from source
-
 ```
-gh repo clone gavink97/pipn .
+gh repo clone <your-username>/pipn .
 cd pipn
 npm install
 make eb
@@ -40,28 +53,25 @@ make build
 ```
 
 === Using pipn
-
 Once pipn is installed, on any browsing tab that has audio playing pipn will
-attempt to enable picture in picture mode by creating a new tab when focus
-leaves firefox. This is because Firefox does not support the https://bugzilla.mozilla.org/show_bug.cgi?id=1463402[Picture in
+attempt to enable picture in picture mode by *minimizing the Firefox window*.
+Upon restoring the Firefox window, the newly created tab will be closed and you
+will be returned to the original tab.
+
+This differs from the original, which triggers on focus loss rather than minimize.
+
+This workaround exists because Firefox does not support the https://bugzilla.mozilla.org/show_bug.cgi?id=1463402[Picture in
 picture API].
 
-Upon focus having returned to firefox, firefox will then close the newly created tab and return you
-to the original tab.
-
 == Contributing
-
 I'm open to contributions.
 
 == Support
-
-If you're feeling generous you can support this project and others I make on
+If you're feeling generous you can support the *original author* on
 https://ko-fi.com/E1E119NG8M[Ko-fi] :)
 
 == Star
-
-If you've found this useful please give it a star ⭐️ as it helps other developers
-find my repos.
+If you've found this fork useful, please also star the link:https://github.com/gavink97/pipn[original pipn repo] ⭐ — it helps other developers find it.
 
 ++++
 <a href="https://star-history.com/#gavink97/pipn&Date">
