@@ -20,9 +20,9 @@ export default {
         'vitest.config.ts',
         'web-ext-config.mjs'
     ],
-    sign: {
-        apiKey: process.env.WEB_EXT_API_KEY || "",
-        apiSecret: process.env.WEB_EXT_API_SECRET || "",
-        channel: "listed"
-    }
+	sign: {
+	    apiKey: "",
+	    apiSecret: "",
+	    channel: "unlisted"
+	}
 };

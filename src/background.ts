@@ -56,8 +56,9 @@ function stopCleanupPoll() {
 	}
 }
 
-async function handleFocusGain() {
+async function handleFocusGain(windowId: number) {
 	pendingLoss = false;
+	if (originalWindowId !== null && windowId !== originalWindowId) return;
 	await cleanupDummy();
 }
 
@@ -90,12 +91,14 @@ browser.windows.onFocusChanged.addListener(async (windowId) => {
 	if (windowId === browser.windows.WINDOW_ID_NONE) {
 		await handleFocusLoss();
 	} else {
-		await handleFocusGain();
+		await handleFocusGain(windowId);
 	}
 });
 
 browser.tabs.onActivated.addListener((activeInfo) => {
-	if (dummyTabId !== null && activeInfo.tabId !== dummyTabId) {
+	if (dummyTabId === null) return;
+	if (originalWindowId !== null && activeInfo.windowId !== originalWindowId) return;
+	if (activeInfo.tabId !== dummyTabId) {
 		cleanupDummy();
 	}
 });
