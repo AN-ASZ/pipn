@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "pipn auto pip",
-    "version": "1.0",
+    "version": "1.1",
     "description": "A hack to get Auto Picture in Picture in Firefox",
     "author": "AN-ASZ",
     "homepage_url": "https://github.com/AN-ASZ/pipn.git",
